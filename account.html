@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Training Tracker - Account</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="banner">
+    <h1>Training Tracker</h1>
+    <a href="account.html" class="account-button">
+      <span class="account-icon"></span> My Account
+    </a>
+  </div>
+
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="content.html">Content</a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <div class="account-container">
+      <div class="sidebar">
+        <h2>User Name</h2>
+        <ul>
+          <li><a href="#">Account Settings</a></li>
+          <li><a href="#">Log Out</a></li>
+          <!-- Add more user options as needed -->
+        </ul>
+      </div>
+
+      <div class="content">
+        <div class="tabs">
+          <div class="tab" onclick="changeTab(event, 'recent-updates')">Recent Updates</div>
+          <div class="tab" onclick="changeTab(event, 'my-content')">My Content</div>
+          <div class="tab" onclick="changeTab(event, 'training-due')">Training Due</div>
+          <div class="tab" onclick="changeTab(event, 'employee-list')">Employees</div> <!-- New tab -->
+          <!-- Add more tabs as needed -->
+        </div>
+
+        <div class="tab-content" id="recent-updates">
+          <p>Recent updates content goes here.</p>
+        </div>
+
+        <div class="tab-content" id="my-content">
+          <p>My content goes here.</p>
+        </div>
+        
+        <div class="tab-content" id="training-due"> 
+          <p>Training due content goes here.</p>
+        </div>
+
+        <div class="tab-content" id="employee-list"> 
+          <p>List of current employees goes here.</p>
+        </div>
+        
+        <!-- Add more tab content sections as needed -->
+      </div>
+    </div>
+  </main>
+
+  <script>
+    function changeTab(event, tabId) {
+      // Get all tab contents and hide them
+      var tabContents = document.getElementsByClassName("tab-content");
+      for (var i = 0; i < tabContents.length; i++) {
+        tabContents[i].style.display = "none";
+      }
+
+      // Get all tabs and remove the active class
+      var tabs = document.getElementsByClassName("tab");
+      for (var i = 0; i < tabs.length; i++) {
+        tabs[i].classList.remove("active");
+      }
+
+      // Show the selected tab content and add the active class to the selected tab
+      document.getElementById(tabId).style.display = "block";
+      event.currentTarget.classList.add("active");
+    }
+    
+    // Set the default active tab
+    window.addEventListener("DOMContentLoaded", function() {
+      var defaultTab = document.getElementsByClassName("tab")[0];
+      defaultTab.classList.add("active");
+      var defaultTabId = defaultTab.getAttribute("onclick").match(/'(.*?)'/)[1];
+      document.getElementById(defaultTabId).style.display = "block";
+    });
+  </script>
+
+</body>
+</html>
